@@ -9,11 +9,12 @@ import {
   Platform,
   ScrollView,
   Alert,
+  Image,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useAuth } from '@/contexts/AuthContext';
-import { Heart } from 'lucide-react-native';
+import { Users } from 'lucide-react-native';
 import { theme } from '@/constants/theme';
 
 export default function Login() {
@@ -50,7 +51,7 @@ export default function Login() {
 
   return (
     <LinearGradient
-      colors={[theme.colors.primaryLight, theme.colors.accentWarm, '#FFFAF5']}
+      colors={['#F5EDE4', '#EAD9C8', '#FDFBF8']}
       style={styles.gradient}
     >
       <KeyboardAvoidingView
@@ -59,8 +60,13 @@ export default function Login() {
       >
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.header}>
+            <Image
+              source={{ uri: 'https://images.pexels.com/photos/8853502/pexels-photo-8853502.jpeg?auto=compress&cs=tinysrgb&w=800' }}
+              style={styles.headerImage}
+              resizeMode="cover"
+            />
             <View style={styles.iconContainer}>
-              <Heart size={56} color={theme.colors.primary} fill={theme.colors.primary} />
+              <Users size={48} color="#8B6F47" strokeWidth={2.5} />
             </View>
             <Text style={styles.title}>Gerações Unidas</Text>
           <Text style={styles.subtitle}>
@@ -119,6 +125,13 @@ const styles = StyleSheet.create({
   gradient: {
     flex: 1,
   },
+  headerImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 24,
+    marginBottom: 24,
+    opacity: 0.85,
+  },
   container: {
     flex: 1,
   },
@@ -132,33 +145,34 @@ const styles = StyleSheet.create({
     marginBottom: 48,
   },
   iconContainer: {
-    width: 110,
-    height: 110,
+    width: 90,
+    height: 90,
     borderRadius: theme.borderRadius.round,
-    backgroundColor: theme.colors.card,
+    backgroundColor: '#FDFBF8',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: theme.spacing.lg,
-    shadowColor: theme.colors.shadowStrong,
-    shadowOffset: { width: 0, height: 6 },
+    marginBottom: theme.spacing.md,
+    shadowColor: 'rgba(139, 111, 71, 0.2)',
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 1,
-    shadowRadius: 16,
-    elevation: 8,
+    shadowRadius: 12,
+    elevation: 6,
+    borderWidth: 2,
+    borderColor: '#E8DCC8',
   },
   title: {
-    fontSize: 38,
+    fontSize: 36,
     fontWeight: '700',
-    color: theme.colors.textDark,
-    marginTop: theme.spacing.md,
+    color: '#5C4434',
+    marginTop: theme.spacing.sm,
     letterSpacing: -0.5,
   },
   subtitle: {
-    fontSize: 18,
-    color: theme.colors.text,
-    marginTop: theme.spacing.sm,
+    fontSize: 17,
+    color: '#7A6651',
+    marginTop: 6,
     textAlign: 'center',
     fontWeight: '500',
-    opacity: 0.9,
   },
   form: {
     width: '100%',
@@ -166,31 +180,31 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: '600',
-    color: theme.colors.textDark,
+    color: '#5C4434',
     marginBottom: theme.spacing.sm,
   },
   input: {
-    backgroundColor: theme.colors.card,
+    backgroundColor: '#FDFBF8',
     borderRadius: theme.borderRadius.md,
     padding: theme.spacing.md,
     fontSize: 16,
     marginBottom: theme.spacing.lg,
-    borderWidth: 1,
-    borderColor: theme.colors.cardBorder,
-    color: theme.colors.text,
-    shadowColor: theme.colors.shadow,
+    borderWidth: 1.5,
+    borderColor: '#E8DCC8',
+    color: '#5C4434',
+    shadowColor: 'rgba(139, 111, 71, 0.1)',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1,
-    shadowRadius: 6,
+    shadowRadius: 4,
     elevation: 2,
   },
   button: {
-    backgroundColor: theme.colors.primary,
+    backgroundColor: '#A67C52',
     borderRadius: theme.borderRadius.lg,
     padding: 20,
     alignItems: 'center',
     marginTop: theme.spacing.md,
-    shadowColor: theme.colors.shadowMedium,
+    shadowColor: 'rgba(139, 111, 71, 0.3)',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 1,
     shadowRadius: 12,
@@ -210,7 +224,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   linkText: {
-    color: theme.colors.textDark,
+    color: '#7A6651',
     fontSize: 16,
     fontWeight: '600',
     textDecorationLine: 'underline',
