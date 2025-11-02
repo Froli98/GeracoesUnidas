@@ -1,0 +1,12 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "project"
+  ],
+  "scripts": {
+    "dev": "cd project && npm run dev",
+    "build:web": "cd project && npm run build:web"
+  }
+}
