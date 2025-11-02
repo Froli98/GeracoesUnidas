@@ -87,6 +87,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signUp = async (email: string, password: string, userType: UserType) => {
+    console.log('AuthContext signUp called', { email, userType });
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -97,10 +99,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       },
     });
 
-    if (error) throw error;
+    console.log('Supabase signUp response', { data, error });
+
+    if (error) {
+      console.error('SignUp error:', error);
+      throw error;
+    }
 
     if (data.user) {
+      console.log('User created:', data.user.id);
       setUser(data.user);
+    } else {
+      console.warn('No user in signUp response');
     }
   };
 

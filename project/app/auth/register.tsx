@@ -26,27 +26,52 @@ export default function Register() {
   const router = useRouter();
 
   const handleRegister = async () => {
+    console.log('handleRegister called', { email, userType });
+
     if (!email || !password || !confirmPassword) {
-      Alert.alert('Erro', 'Por favor preencha todos os campos');
+      const msg = 'Por favor preencha todos os campos';
+      if (Platform.OS === 'web') {
+        alert(msg);
+      } else {
+        Alert.alert('Erro', msg);
+      }
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert('Erro', 'As palavras-passe não coincidem');
+      const msg = 'As palavras-passe não coincidem';
+      if (Platform.OS === 'web') {
+        alert(msg);
+      } else {
+        Alert.alert('Erro', msg);
+      }
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert('Erro', 'A palavra-passe deve ter pelo menos 6 caracteres');
+      const msg = 'A palavra-passe deve ter pelo menos 6 caracteres';
+      if (Platform.OS === 'web') {
+        alert(msg);
+      } else {
+        Alert.alert('Erro', msg);
+      }
       return;
     }
 
     setLoading(true);
+    console.log('Calling signUp...');
     try {
       await signUp(email, password, userType);
+      console.log('SignUp successful, redirecting...');
       router.replace('/auth/complete-profile');
     } catch (error: any) {
-      Alert.alert('Erro', error.message || 'Erro ao criar conta');
+      console.error('SignUp error:', error);
+      const msg = error.message || 'Erro ao criar conta';
+      if (Platform.OS === 'web') {
+        alert('Erro: ' + msg);
+      } else {
+        Alert.alert('Erro', msg);
+      }
     } finally {
       setLoading(false);
     }
