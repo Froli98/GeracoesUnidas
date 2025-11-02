@@ -339,13 +339,15 @@ export default function RoomApplications() {
                   <View
                     style={[
                       styles.statusBadge,
-                      app.status === 'accepted'
+                      app.status === 'accepted' || app.status === 'awaiting_payment'
                         ? styles.acceptedBadge
                         : styles.rejectedBadge,
                     ]}
                   >
                     <Text style={styles.statusBadgeText}>
-                      {app.status === 'accepted' ? 'Aceite' : 'Recusada'}
+                      {app.status === 'accepted' || app.status === 'awaiting_payment'
+                        ? 'Aceite'
+                        : 'Recusada'}
                     </Text>
                   </View>
                 )}
