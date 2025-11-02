@@ -42,17 +42,15 @@ export default function TabLayout() {
           ),
         }}
       />
-      {!isElderly && (
-        <Tabs.Screen
-          name="search"
-          options={{
-            title: 'Procurar',
-            tabBarIcon: ({ size, color }) => (
-              <Search size={size} color={color} />
-            ),
-          }}
-        />
-      )}
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: 'Procurar',
+          tabBarIcon: ({ size, color }) => (
+            <Search size={size} color={color} />
+          ),
+        }}
+      />
       <Tabs.Screen
         name="messages"
         options={{
